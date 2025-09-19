@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Casa de Jesús - Página Principal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#1e40af',
+                        'secondary': '#1e3a8a',
+                        'accent': '#fbbf24',
+                        'gold': '#f59e0b',
+                        'warm': '#fef3c7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(30, 59, 138, 0.151)), url('images/bautizo2025/bautizo2025.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #1e40af, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Estilos para el modal de fotos */
+        #photo-modal {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+        
+        #photo-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #photo-modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        #photo-modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        #photo-modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Transición suave para las imágenes */
+        #main-photo {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        /* Estilos para miniaturas */
+        .thumbnail-active {
+            border-color: #fbbf24 !important;
+            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.3);
+        }
+        
+        /* Estilos para el modal del calendario */
+        #calendar-modal {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+        }
+        
+        #calendar-modal::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #calendar-modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        #calendar-modal::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        
+        #calendar-modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Estilos para el contenido del calendario */
+        .calendar-content {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+        }
+        
+        .calendar-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .calendar-content::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+        
+        .calendar-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+        
+        .calendar-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                  <img src="images/logo.png" alt="Logo" class="w-full h-10">
+                    <!-- <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                        <i class="fas fa-church text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Iglesia Casa de Jesús</h1>
+                        <p class="text-xs text-gray-600">Donde la fe se fortalece</p>
+                    </div> -->
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Inicio</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Nosotros</a>
+                    <a href="#servicios" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Servicios</a>
+                    <a href="#eventos" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Eventos</a>
+                    <a href="#ministerios" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Ministerios</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-primary font-medium transition-colors duration-300">Contacto</a>
+                    <a href="#vivo" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-secondary transition-colors duration-300">
+                        <i class="fas fa-play mr-2"></i>En Vivo
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#inicio" class="block py-2 text-gray-700 hover:text-primary font-medium">Inicio</a>
+                <a href="#nosotros" class="block py-2 text-gray-700 hover:text-primary font-medium">Nosotros</a>
+                <a href="#servicios" class="block py-2 text-gray-700 hover:text-primary font-medium">Servicios</a>
+                <a href="#eventos" class="block py-2 text-gray-700 hover:text-primary font-medium">Eventos</a>
+                <a href="#ministerios" class="block py-2 text-gray-700 hover:text-primary font-medium">Ministerios</a>
+                <a href="#contacto" class="block py-2 text-gray-700 hover:text-primary font-medium">Contacto</a>
+                <a href="#vivo" class="block py-2 bg-primary text-white rounded-lg text-center font-semibold">
+                    <i class="fas fa-play mr-2"></i>En Vivo
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 floating">
+            <i class="fas fa-dove text-4xl text-accent opacity-60"></i>
+        </div>
+        <div class="absolute top-40 right-20 floating" style="animation-delay: 1s;">
+            <i class="fas fa-cross text-3xl text-accent opacity-60"></i>
+        </div>
+        <div class="absolute bottom-40 left-20 floating" style="animation-delay: 2s;">
+            <i class="fas fa-heart text-2xl text-accent opacity-60"></i>
+        </div>
+        
+        <div class="text-center max-w-4xl mx-auto px-4 fade-in">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow">
+                Bienvenidos a Casa de Jesús
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-shadow max-w-2xl mx-auto">
+                Un lugar donde la fe se fortalece, las vidas se transforman y la comunidad crece en amor
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#servicios" class="bg-accent text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-calendar-alt mr-2"></i>Próximos Servicios
+                </a>
+                <a href="#vivo" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-video mr-2"></i>Ver Transmisión
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stream Banner -->
+    <section id="vivo" class="bg-gradient-to-r from-red-600 to-red-700 text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                    <span class="font-bold">EN VIVO AHORA</span>
+                </div>
+                <div>
+                    <h3 class="font-semibold">Servicio Dominical</h3>
+                    <p class="text-sm opacity-90">Únete a nuestra transmisión en vivo</p>
+                </div>
+            </div>
+            <a href="https://www.facebook.com/fundacioneiglesiacasadejesus" target="_blank" class="bg-white text-red-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300">
+                <i class="fab fa-facebook mr-2"></i>Ver Ahora
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="nosotros" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Nuestra <span class="gradient-text">Misión</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Somos una comunidad de fe comprometida con el crecimiento espiritual, el servicio a otros y la construcción de un mundo mejor a través del amor de Cristo.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Amor</h3>
+                    <p class="text-gray-600">Vivimos y compartimos el amor incondicional de Dios en cada acción y palabra.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gradient-to-br from-yellow-50 to-amber-100 p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Servicio</h3>
+                    <p class="text-gray-600">Servimos a nuestra comunidad con compasión y dedicación, siguiendo el ejemplo de Jesús.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-seedling text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Crecimiento</h3>
+                    <p class="text-gray-600">Fomentamos el crecimiento espiritual personal y comunitario a través de la Palabra de Dios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Nuestros <span class="gradient-text">Servicios</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Únete a nosotros en nuestros servicios regulares y eventos especiales diseñados para fortalecer tu fe y conectar con la comunidad.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sunday Service -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <!-- <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <i class="fas fa-church text-white text-6xl"></i>
+                    </div> -->
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <img src="images/talagante/fondo1.jpg" alt="Servicio talagante" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Servicio general en Talagante</h3>
+                        <p class="text-accent font-semibold mb-4">Domingo 11:00 AM</p>
+                        <p class="text-gray-600 mb-4">Nuestro servicio principal con adoración, predicación y comunión.</p>
+                        <a href="https://maps.app.goo.gl/HJe2pTxMTvzi7zfZ6" target="_blank" class="flex items-center text-sm text-blue-700 hover:text-primary">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Cam. El Oliveto 200, Talagante, Región Metropolitana, Chile</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Bible Study -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <!-- <div class="h-48 bg-gradient-to-br from-accent to-gold flex items-center justify-center">
+                        <i class="fas fa-bible text-white text-6xl"></i>
+                    </div> -->
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                      <img src="images/cerrillos/cerrillo.jpg" alt="Servicio talagante" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Reuniones en Cerrillos</h3>
+                        <p class="text-accent font-semibold mb-4">Miércoles 7:00 PM</p>
+                        <p class="text-gray-600 mb-4">Estudio profundo de la Palabra de Dios en un ambiente íntimo.</p>
+                        <!-- <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>Grupos pequeños</span>
+                        </div> -->
+                        <a href="https://maps.app.goo.gl/qqcgyzXBDLtbpkd9A" target="_blank" class="flex items-center text-sm text-blue-700 hover:text-primary">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>San Andrés 4465, Cerrillos, Región Metropolitana, Chile</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Youth Service -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+                        <i class="fa-solid fa-radio icono radio text-white text-6xl"></i>
+                        
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Radio por una vida sin drogas</h3>
+                        <!-- <p>
+                          <small><i class="fa fa-radio"></i> Radio Alas de Águila - 107.3 FM</small>
+                        </p> -->
+                        
+                        <p class="text-accent font-semibold mb-4">Viernes 7:00 PM</p>
+                        <p class="text-gray-600 mb-4">RADIO ALAS DE ÁGUILA 107.3 FM.</p>
+                        <div class="flex items-center text-sm text-gray-500">
+                            <i class="fas fa-music mr-2"></i>
+                            <span>Música, predicación y testimonios</span>
+                        </div>
+                        <div class="flex justify-center">
+                          <a href="https://www.radiopeñaflor.cl" target="_blank" class="mt-2 justify-center flex items-center bg-primary text-white px-4 py-2 rounded-full font-semibold hover:bg-gold transition-all duration-300 transform hover:scale-105">
+                              <i class="fas fa-play mr-2"></i>Escuchar
+                          </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="eventos" class="pt-20 pb-10 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Próximos <span class="gradient-text">Eventos</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Únete a nosotros en estos eventos especiales diseñados para fortalecer la comunidad y celebrar nuestra fe.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-red-50 to-pink-100 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">24</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Diciembre</p>
+                            <p class="font-semibold text-gray-900">Nochebuena</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Servicio de Navidad</h3>
+                    <p class="text-gray-600 mb-4">Celebra el nacimiento de nuestro Salvador con música especial y drama navideño.</p>
+                    <a href="#" class="text-primary font-semibold hover:text-secondary transition-colors duration-300">
+                        Más información <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">31</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Diciembre</p>
+                            <p class="font-semibold text-gray-900">Año Nuevo</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Vigilia de Año Nuevo</h3>
+                    <p class="text-gray-600 mb-4">Comienza el nuevo año con oración, alabanza y gratitud.</p>
+                    <a href="#" class="text-primary font-semibold hover:text-secondary transition-colors duration-300">
+                        Más información <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-8 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold">15</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Enero</p>
+                            <p class="font-semibold text-gray-900">Bautismo</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ceremonia de Bautismo</h3>
+                    <p class="text-gray-600 mb-4">Celebra el nuevo nacimiento en Cristo con nuevos miembros.</p>
+                    <a href="#" class="text-primary font-semibold hover:text-secondary transition-colors duration-300">
+                        Más información <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+              <!-- Botón Calendario -->
+            <div class="text-center mt-4">
+              <button onclick="openCalendar()" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-secondary hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Ver Calendario de Eventos
+              </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos realizados como anuncios, al hacer click se muestran las galerias de imagenes y videos, y un boton para ver el calendario de eventos. desde otra pagina -->
+    <section id="eventos-realizados" class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Eventos <span class="gradient-text">Realizados</span>
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Revive los momentos especiales de nuestros eventos pasados. Haz clic en cualquier evento para ver la galería completa.
+          </p>
+        </div>
+        
+        <!-- Eventos Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <!-- Bautizo 2024 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('bautizo2024')">
+            <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600">
+              <img src="images/bautizo2024/IMG-20250918-WA0011.jpg" alt="Bautizo 2024" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-calendar mr-1"></i>2024
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Bautizo Colectivo 2024</h3>
+              <p class="text-gray-600 mb-4">Celebración especial de bautismo con nuevos miembros de la congregación.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>15 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>2 videos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bautizo 2025 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('bautizo2025')">
+            <div class="relative h-48 bg-gradient-to-br from-green-500 to-teal-600">
+              <img src="images/bautizo2025/bautizo2025.jpg" alt="Bautizo 2025" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-calendar mr-1"></i>2025
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Bautizo Colectivo 2025</h3>
+              <p class="text-gray-600 mb-4">Nueva generación de creyentes se une a nuestra familia de fe.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>8 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>1 video</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cerrillos -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('cerrillos')">
+            <div class="relative h-48 bg-gradient-to-br from-orange-500 to-red-600">
+              <img src="images/cerrillos/IMG-20250918-WA0006.jpg" alt="Cerrillos" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-map-marker-alt mr-1"></i>Cerrillos
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Ministerio en Cerrillos</h3>
+              <p class="text-gray-600 mb-4">Actividades de evangelización y servicio comunitario en Cerrillos.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>12 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>3 videos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Talagante -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('talagante')">
+            <div class="relative h-48 bg-gradient-to-br from-indigo-500 to-blue-600">
+              <img src="images/talagante/fondo1.jpg" alt="Talagante" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-church mr-1"></i>Talagante
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Iglesia en Talagante</h3>
+              <p class="text-gray-600 mb-4">Nuestra sede principal con servicios regulares y eventos especiales.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>25 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>5 videos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Evento Especial 1 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('especial1')">
+            <div class="relative h-48 bg-gradient-to-br from-pink-500 to-rose-600">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-star mr-1"></i>Especial
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Conferencia de Jóvenes</h3>
+              <p class="text-gray-600 mb-4">Evento especial para jóvenes con música, charlas y actividades.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>18 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>4 videos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Evento Especial 2 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover cursor-pointer" onclick="openEventGallery('especial2')">
+            <div class="relative h-48 bg-gradient-to-br from-yellow-500 to-orange-600">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white">
+                  <i class="fas fa-play-circle text-4xl mb-2"></i>
+                  <p class="font-semibold">Ver Galería</p>
+                </div>
+              </div>
+              <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <i class="fas fa-heart mr-1"></i>Navidad
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Celebración Navideña</h3>
+              <p class="text-gray-600 mb-4">Noche especial de Navidad con drama, música y comunión familiar.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-images mr-2"></i>
+                  <span>22 fotos</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <i class="fas fa-video mr-2"></i>
+                  <span>6 videos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Galería -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col">
+        <!-- Header del Modal -->
+        <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 flex justify-between items-center flex-shrink-0">
+          <h3 id="gallery-title" class="text-2xl font-bold">Galería de Evento</h3>
+          <button onclick="closeGallery()" class="text-white text-3xl hover:text-accent transition-colors duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <!-- Contenido del Modal -->
+        <div class="p-6 overflow-y-auto flex-1">
+          <!-- Tabs -->
+          <div class="flex space-x-4 mb-6 border-b flex-shrink-0">
+            <button id="photos-tab" onclick="switchTab('photos')" class="px-4 py-2 font-semibold text-primary border-b-2 border-primary">
+              <i class="fas fa-images mr-2"></i>Fotos
+            </button>
+            <button id="videos-tab" onclick="switchTab('videos')" class="px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent hover:text-primary">
+              <i class="fas fa-video mr-2"></i>Videos
+            </button>
+          </div>
+          
+          <!-- Galería de Fotos -->
+          <div id="photos-content" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Las fotos se cargarán dinámicamente -->
+          </div>
+          
+          <!-- Galería de Videos -->
+          <div id="videos-content" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Los videos se cargarán dinámicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Calendario -->
+    <div id="calendar-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] overflow-hidden flex flex-col">
+        <!-- Header del Modal -->
+        <div class="bg-gradient-to-r from-accent to-gold text-white p-6 flex justify-between items-center flex-shrink-0">
+          <h3 class="text-2xl font-bold">Calendario de Eventos</h3>
+          <button onclick="closeCalendar()" class="text-white text-3xl hover:text-gray-200 transition-colors duration-300">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <!-- Contenido del Calendario -->
+        <div class="p-6 overflow-y-auto flex-1 calendar-content">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Próximos Eventos -->
+            <div>
+              <h4 class="text-xl font-bold text-gray-900 mb-4">Próximos Eventos</h4>
+              <div class="space-y-4">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Servicio de Navidad</h5>
+                      <p class="text-sm text-gray-600">24 de Diciembre, 7:00 PM</p>
+                    </div>
+                    <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">Próximo</span>
+                  </div>
+                </div>
+                
+                <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Vigilia de Año Nuevo</h5>
+                      <p class="text-sm text-gray-600">31 de Diciembre, 10:00 PM</p>
+                    </div>
+                    <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">Confirmado</span>
+                  </div>
+                </div>
+                
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Bautizo Colectivo</h5>
+                      <p class="text-sm text-gray-600">15 de Enero, 11:00 AM</p>
+                    </div>
+                    <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Planificado</span>
+                  </div>
+                </div>
+                
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Retiro Espiritual</h5>
+                      <p class="text-sm text-gray-600">20-22 de Enero, 2025</p>
+                    </div>
+                    <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">Especial</span>
+                  </div>
+                </div>
+                
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Conferencia de Jóvenes</h5>
+                      <p class="text-sm text-gray-600">25 de Enero, 6:00 PM</p>
+                    </div>
+                    <span class="bg-indigo-500 text-white px-3 py-1 rounded-full text-sm">Confirmado</span>
+                  </div>
+                </div>
+                
+                <div class="bg-teal-50 border-l-4 border-teal-500 p-4 rounded">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h5 class="font-semibold text-gray-900">Día de la Familia</h5>
+                      <p class="text-sm text-gray-600">2 de Febrero, 3:00 PM</p>
+                    </div>
+                    <span class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm">Planificado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Eventos Recurrentes -->
+            <div>
+              <h4 class="text-xl font-bold text-gray-900 mb-4">Eventos Recurrentes</h4>
+              <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-church text-primary mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Servicio Dominical</p>
+                      <p class="text-sm text-gray-600">Todos los domingos</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">10:00 AM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-bible text-accent mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Estudio Bíblico</p>
+                      <p class="text-sm text-gray-600">Todos los miércoles</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">7:00 PM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-users text-green-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Ministerio Juvenil</p>
+                      <p class="text-sm text-gray-600">Todos los viernes</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">7:30 PM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-pray text-purple-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Oración Matutina</p>
+                      <p class="text-sm text-gray-600">Lunes a Viernes</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">7:00 AM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-female text-pink-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Ministerio de Mujeres</p>
+                      <p class="text-sm text-gray-600">Todos los sábados</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">3:00 PM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-male text-blue-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Ministerio de Hombres</p>
+                      <p class="text-sm text-gray-600">Todos los sábados</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">5:00 PM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-graduation-cap text-indigo-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Escuela Dominical</p>
+                      <p class="text-sm text-gray-600">Todos los domingos</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">9:00 AM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-music text-yellow-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Coro y Música</p>
+                      <p class="text-sm text-gray-600">Todos los jueves</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">7:30 PM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-child text-teal-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Ministerio Infantil</p>
+                      <p class="text-sm text-gray-600">Todos los domingos</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">9:30 AM</span>
+                </div>
+                
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                  <div class="flex items-center">
+                    <i class="fas fa-heart text-red-600 mr-3"></i>
+                    <div>
+                      <p class="font-semibold text-gray-900">Ministerio de Matrimonios</p>
+                      <p class="text-sm text-gray-600">Primer sábado del mes</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-500">6:00 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ministries Section -->
+    <section id="ministerios" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    Nuestros <span class="gradient-text">Ministerios</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Únete a uno de nuestros ministerios y descubre cómo puedes servir y crecer en la comunidad de fe.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 text-center card-hover">
+                    <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-child text-pink-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Niños</h3>
+                    <p class="text-sm text-gray-600">Escuela dominical y actividades para niños</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-music text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Alabanza</h3>
+                    <p class="text-sm text-gray-600">Ministerio de música y adoración</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hands-helping text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Servicio</h3>
+                    <p class="text-sm text-gray-600">Ayuda comunitaria y voluntariado</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-pray text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Oración</h3>
+                    <p class="text-sm text-gray-600">Grupos de oración e intercesión</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    <span class="gradient-text">Contáctanos</span>
+                </h2> 
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Estamos aquí para ti. No dudes en contactarnos si tienes preguntas o necesitas apoyo espiritual.
+                </p>
+            </div>
+
+            <!-- justify de facebook, instagram -->
+
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.facebook.com/fundacioneiglesiacasadejesus" target="_blank" class="bg-primary text-white px-4 py-2 rounded-full font-semibold hover:bg-gold transition-all duration-300 transform hover:scale-105">
+                    <i class="fab fa-facebook mr-2"></i>Facebook
+                </a>
+                <a href="https://www.instagram.com/casadejesusoficial" target="_blank" class="bg-primary text-white px-4 py-2 rounded-full font-semibold hover:bg-gold transition-all duration-300 transform hover:scale-105">
+                    <i class="fab fa-instagram mr-2"></i>Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                            <i class="fas fa-church text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Iglesia Casa de Jesús</h3>
+                            <p class="text-sm text-gray-400">Donde la fe se fortalece</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Una comunidad de fe comprometida con el crecimiento espiritual, el servicio a otros y la construcción de un mundo mejor a través del amor de Cristo.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition-colors duration-300">Inicio</a></li>
+                        <li><a href="#nosotros" class="text-gray-400 hover:text-white transition-colors duration-300">Nosotros</a></li>
+                        <li><a href="#servicios" class="text-gray-400 hover:text-white transition-colors duration-300">Servicios</a></li>
+                        <li><a href="#eventos" class="text-gray-400 hover:text-white transition-colors duration-300">Eventos</a></li>
+                        <li><a href="#ministerios" class="text-gray-400 hover:text-white transition-colors duration-300">Ministerios</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Horarios</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Domingos: 10:00 AM</li>
+                        <li>Miércoles: 7:00 PM</li>
+                        <li>Viernes: 7:30 PM</li>
+                        <li>Oficina: Lun-Vie 9:00-17:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Iglesia Casa de Jesús. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:bg-secondary transition-all duration-300 transform hover:scale-110 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Eventos realizados - Funciones de galería
+        function openEventGallery(eventType) {
+            const modal = document.getElementById('gallery-modal');
+            const title = document.getElementById('gallery-title');
+            
+            // Configurar título según el evento
+            const eventTitles = {
+                'bautizo2024': 'Bautizo Colectivo 2024',
+                'bautizo2025': 'Bautizo Colectivo 2025',
+                'cerrillos': 'Ministerio en Cerrillos',
+                'talagante': 'Iglesia en Talagante',
+                'especial1': 'Conferencia de Jóvenes',
+                'especial2': 'Celebración Navideña'
+            };
+            
+            title.textContent = eventTitles[eventType] || 'Galería de Evento';
+            
+            // Cargar contenido según el evento
+            loadEventContent(eventType);
+            
+            // Mostrar modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeGallery() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openCalendar() {
+            const modal = document.getElementById('calendar-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCalendar() {
+            const modal = document.getElementById('calendar-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function switchTab(tab) {
+            const photosTab = document.getElementById('photos-tab');
+            const videosTab = document.getElementById('videos-tab');
+            const photosContent = document.getElementById('photos-content');
+            const videosContent = document.getElementById('videos-content');
+            
+            if (tab === 'photos') {
+                photosTab.classList.add('text-primary', 'border-primary');
+                photosTab.classList.remove('text-gray-500', 'border-transparent');
+                videosTab.classList.add('text-gray-500', 'border-transparent');
+                videosTab.classList.remove('text-primary', 'border-primary');
+                photosContent.classList.remove('hidden');
+                videosContent.classList.add('hidden');
+            } else {
+                videosTab.classList.add('text-primary', 'border-primary');
+                videosTab.classList.remove('text-gray-500', 'border-transparent');
+                photosTab.classList.add('text-gray-500', 'border-transparent');
+                photosTab.classList.remove('text-primary', 'border-primary');
+                videosContent.classList.remove('hidden');
+                photosContent.classList.add('hidden');
+            }
+        }
+        
+        function loadEventContent(eventType) {
+            const photosContent = document.getElementById('photos-content');
+            const videosContent = document.getElementById('videos-content');
+            
+            // Limpiar contenido anterior
+            photosContent.innerHTML = '';
+            videosContent.innerHTML = '';
+            
+            // Configurar contenido según el evento
+            const eventData = {
+                'bautizo2024': {
+                    photos: [
+                        'images/bautizo2024/IMG-20250918-WA0011.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0012.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0013.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0014.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0016.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0017.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0018.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0019.jpg',
+                        'images/bautizo2024/IMG-20250918-WA0021.jpg'
+                    ],
+                    videos: [
+                        { title: 'Momento del Bautizo', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Celebración Final', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                },
+                'bautizo2025': {
+                    photos: [
+                        'images/bautizo2025/bautizo2025.jpg'
+                    ],
+                    videos: [
+                        { title: 'Bautizo 2025', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                },
+                'cerrillos': {
+                    photos: [
+                        'images/cerrillos/IMG-20250918-WA0006.jpg',
+                        'images/cerrillos/IMG-20250918-WA0007.jpg',
+                        'images/cerrillos/IMG-20250918-WA0009.jpg',
+                        'images/cerrillos/IMG-20250918-WA0010.jpg'
+                    ],
+                    videos: [
+                        { title: 'Evangelización en Cerrillos', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Servicio Comunitario', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Testimonios', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                },
+                'talagante': {
+                    photos: [
+                        'images/talagante/fondo1.jpg',
+                        'images/talagante/IMG-20250912-WA0013.jpg',
+                        'images/talagante/IMG-20250912-WA0014.jpg',
+                        'images/talagante/IMG-20250912-WA0015.jpg',
+                        'images/talagante/IMG-20250912-WA0016.jpg',
+                        'images/talagante/IMG-20250912-WA0017.jpg',
+                        'images/talagante/IMG-20250912-WA0018.jpg',
+                        'images/talagante/IMG-20250912-WA0019.jpg',
+                        'images/talagante/IMG-20250912-WA0020.jpg',
+                        'images/talagante/IMG-20250912-WA0021.jpg',
+                        'images/talagante/IMG-20250912-WA0022.jpg',
+                        'images/talagante/IMG-20250912-WA0023.jpg',
+                        'images/talagante/IMG-20250912-WA0024.jpg',
+                        'images/talagante/IMG-20250912-WA0025.jpg',
+                        'images/talagante/IMG-20250912-WA0026.jpg',
+                        'images/talagante/IMG-20250912-WA0027.jpg',
+                        'images/talagante/IMG-20250912-WA0028.jpg',
+                        'images/talagante/IMG-20250912-WA0029.jpg',
+                        'images/talagante/IMG-20250912-WA0030.jpg',
+                        'images/talagante/IMG-20250912-WA0031.jpg',
+                        'images/talagante/IMG-20250912-WA0032.jpg',
+                        'images/talagante/IMG-20250912-WA0033.jpg',
+                        'images/talagante/IMG-20250912-WA0034.jpg',
+                        'images/talagante/IMG-20250918-WA0008.jpg'
+                    ],
+                    videos: [
+                        { title: 'Servicio Dominical', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Estudio Bíblico', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Ministerio Juvenil', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Eventos Especiales', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Comunión', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                },
+                'especial1': {
+                    photos: [
+                        'images/talagante/IMG-20250912-WA0013.jpg',
+                        'images/talagante/IMG-20250912-WA0014.jpg',
+                        'images/talagante/IMG-20250912-WA0015.jpg',
+                        'images/talagante/IMG-20250912-WA0016.jpg',
+                        'images/talagante/IMG-20250912-WA0017.jpg',
+                        'images/talagante/IMG-20250912-WA0018.jpg',
+                        'images/talagante/IMG-20250912-WA0019.jpg',
+                        'images/talagante/IMG-20250912-WA0020.jpg',
+                        'images/talagante/IMG-20250912-WA0021.jpg',
+                        'images/talagante/IMG-20250912-WA0022.jpg',
+                        'images/talagante/IMG-20250912-WA0023.jpg',
+                        'images/talagante/IMG-20250912-WA0024.jpg',
+                        'images/talagante/IMG-20250912-WA0025.jpg',
+                        'images/talagante/IMG-20250912-WA0026.jpg',
+                        'images/talagante/IMG-20250912-WA0027.jpg',
+                        'images/talagante/IMG-20250912-WA0028.jpg',
+                        'images/talagante/IMG-20250912-WA0029.jpg',
+                        'images/talagante/IMG-20250912-WA0030.jpg'
+                    ],
+                    videos: [
+                        { title: 'Conferencia de Jóvenes', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Música y Alabanza', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Testimonios Juveniles', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Actividades Grupales', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                },
+                'especial2': {
+                    photos: [
+                        'images/talagante/IMG-20250912-WA0013.jpg',
+                        'images/talagante/IMG-20250912-WA0014.jpg',
+                        'images/talagante/IMG-20250912-WA0015.jpg',
+                        'images/talagante/IMG-20250912-WA0016.jpg',
+                        'images/talagante/IMG-20250912-WA0017.jpg',
+                        'images/talagante/IMG-20250912-WA0018.jpg',
+                        'images/talagante/IMG-20250912-WA0019.jpg',
+                        'images/talagante/IMG-20250912-WA0020.jpg',
+                        'images/talagante/IMG-20250912-WA0021.jpg',
+                        'images/talagante/IMG-20250912-WA0022.jpg',
+                        'images/talagante/IMG-20250912-WA0023.jpg',
+                        'images/talagante/IMG-20250912-WA0024.jpg',
+                        'images/talagante/IMG-20250912-WA0025.jpg',
+                        'images/talagante/IMG-20250912-WA0026.jpg',
+                        'images/talagante/IMG-20250912-WA0027.jpg',
+                        'images/talagante/IMG-20250912-WA0028.jpg',
+                        'images/talagante/IMG-20250912-WA0029.jpg',
+                        'images/talagante/IMG-20250912-WA0030.jpg',
+                        'images/talagante/IMG-20250912-WA0031.jpg',
+                        'images/talagante/IMG-20250912-WA0032.jpg',
+                        'images/talagante/IMG-20250912-WA0033.jpg',
+                        'images/talagante/IMG-20250912-WA0034.jpg'
+                    ],
+                    videos: [
+                        { title: 'Drama Navideño', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Música de Navidad', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Mensaje de Navidad', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Comunión Familiar', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Celebración Final', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                        { title: 'Testimonios Navideños', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                    ]
+                }
+            };
+            
+            const data = eventData[eventType] || { photos: [], videos: [] };
+            
+            // Cargar fotos
+            data.photos.forEach((photo, index) => {
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'relative group cursor-pointer';
+                photoDiv.innerHTML = `
+                    <img src="${photo}" alt="Foto ${index + 1}" class="w-full h-32 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                    </div>
+                `;
+                photoDiv.onclick = () => openPhotoModal(photo, data.photos, index);
+                photosContent.appendChild(photoDiv);
+            });
+            
+            // Cargar videos
+            data.videos.forEach((video, index) => {
+                const videoDiv = document.createElement('div');
+                videoDiv.className = 'bg-gray-100 rounded-lg overflow-hidden';
+                videoDiv.innerHTML = `
+                    <div class="aspect-video bg-gray-200 flex items-center justify-center">
+                        <iframe src="${video.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-semibold text-gray-900">${video.title}</h4>
+                    </div>
+                `;
+                videosContent.appendChild(videoDiv);
+            });
+            
+            // Mostrar pestaña de fotos por defecto
+            switchTab('photos');
+        }
+        
+        // Variables globales para el modal de fotos
+        let currentPhotoIndex = 0;
+        let currentPhotos = [];
+        let currentModal = null;
+
+        function openPhotoModal(photoSrc, allPhotos, currentIndex) {
+            // Guardar variables globales
+            currentPhotos = allPhotos;
+            currentPhotoIndex = currentIndex;
+            
+            // Crear modal de foto individual
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4 overflow-y-auto';
+            modal.id = 'photo-modal';
+            
+            modal.innerHTML = `
+                <div class="relative max-w-6xl w-full max-h-full flex flex-col">
+                    <!-- Header con controles -->
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="text-white">
+                            <h3 class="text-xl font-semibold">Galería de Fotos</h3>
+                            <p class="text-sm opacity-75">${currentIndex + 1} de ${allPhotos.length} fotos</p>
+                        </div>
+                        <button onclick="closePhotoModal()" class="text-white text-3xl hover:text-accent transition-colors duration-300 bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Imagen principal -->
+                    <div class="flex-1 flex items-center justify-center bg-gray-900 rounded-lg overflow-hidden relative">
+                        <img id="main-photo" src="${photoSrc}" alt="Foto ${currentIndex + 1}" class="max-w-full max-h-full object-contain">
+                        
+                        <!-- Botones de navegación laterales -->
+                        <button onclick="navigatePhoto(-1)" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl px-4 py-2 rounded-full hover:bg-opacity-70 transition-all duration-300 ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentIndex === 0 ? 'disabled' : ''}>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button onclick="navigatePhoto(1)" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl px-4 py-2 rounded-full hover:bg-opacity-70 transition-all duration-300 ${currentIndex === allPhotos.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentIndex === allPhotos.length - 1 ? 'disabled' : ''}>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Controles inferiores -->
+                    <div class="flex justify-center items-center mt-4 space-x-4">
+                        <button onclick="navigatePhoto(-1)" class="bg-white bg-opacity-20 text-white px-6 py-3 rounded-full hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-2 ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentIndex === 0 ? 'disabled' : ''}>
+                            <i class="fas fa-chevron-left"></i>
+                            <span>Anterior</span>
+                        </button>
+                        
+                        <div class="bg-white bg-opacity-20 text-white px-6 py-3 rounded-full">
+                            <span class="font-semibold">${currentIndex + 1} / ${allPhotos.length}</span>
+                        </div>
+                        
+                        <button onclick="navigatePhoto(1)" class="bg-white bg-opacity-20 text-white px-6 py-3 rounded-full hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-2 ${currentIndex === allPhotos.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}" ${currentIndex === allPhotos.length - 1 ? 'disabled' : ''}>
+                            <span>Siguiente</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Miniaturas (opcional) -->
+                    <div class="mt-4 flex justify-center">
+                        <div class="flex space-x-2 max-w-full overflow-x-auto pb-2">
+                            ${allPhotos.map((photo, index) => `
+                                <img src="${photo}" alt="Miniatura ${index + 1}" 
+                                     onclick="goToPhoto(${index})" 
+                                     class="w-16 h-16 object-cover rounded cursor-pointer border-2 ${index === currentIndex ? 'border-accent' : 'border-transparent'} hover:border-white transition-all duration-300">
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            currentModal = modal;
+            document.body.style.overflow = 'hidden';
+            
+            // Agregar event listeners para las flechas del teclado
+            document.addEventListener('keydown', handlePhotoKeyboard);
+        }
+        
+        function closePhotoModal() {
+            if (currentModal) {
+                currentModal.remove();
+                currentModal = null;
+                document.body.style.overflow = 'auto';
+                document.removeEventListener('keydown', handlePhotoKeyboard);
+            }
+        }
+        
+        function navigatePhoto(direction) {
+            if (!currentPhotos || currentPhotos.length === 0) return;
+            
+            const newIndex = currentPhotoIndex + direction;
+            
+            // Verificar límites
+            if (newIndex < 0 || newIndex >= currentPhotos.length) return;
+            
+            currentPhotoIndex = newIndex;
+            const mainPhoto = document.getElementById('main-photo');
+            
+            if (mainPhoto) {
+                // Efecto de fade
+                mainPhoto.style.opacity = '0';
+                setTimeout(() => {
+                    mainPhoto.src = currentPhotos[currentPhotoIndex];
+                    mainPhoto.alt = `Foto ${currentPhotoIndex + 1}`;
+                    mainPhoto.style.opacity = '1';
+                }, 150);
+            }
+            
+            // Actualizar contadores y botones
+            updatePhotoControls();
+        }
+        
+        function goToPhoto(index) {
+            if (index < 0 || index >= currentPhotos.length) return;
+            
+            currentPhotoIndex = index;
+            const mainPhoto = document.getElementById('main-photo');
+            
+            if (mainPhoto) {
+                mainPhoto.style.opacity = '0';
+                setTimeout(() => {
+                    mainPhoto.src = currentPhotos[currentPhotoIndex];
+                    mainPhoto.alt = `Foto ${currentPhotoIndex + 1}`;
+                    mainPhoto.style.opacity = '1';
+                }, 150);
+            }
+            
+            updatePhotoControls();
+        }
+        
+        function updatePhotoControls() {
+            // Actualizar texto del contador
+            const counter = document.querySelector('.bg-white.bg-opacity-20.text-white.px-6.py-3.rounded-full span');
+            if (counter) {
+                counter.textContent = `${currentPhotoIndex + 1} / ${currentPhotos.length}`;
+            }
+            
+            // Actualizar título
+            const title = document.querySelector('.text-white h3 + p');
+            if (title) {
+                title.textContent = `${currentPhotoIndex + 1} de ${currentPhotos.length} fotos`;
+            }
+            
+            // Actualizar estado de botones
+            const prevButtons = document.querySelectorAll('button[onclick="navigatePhoto(-1)"]');
+            const nextButtons = document.querySelectorAll('button[onclick="navigatePhoto(1)"]');
+            
+            prevButtons.forEach(btn => {
+                if (currentPhotoIndex === 0) {
+                    btn.classList.add('opacity-50', 'cursor-not-allowed');
+                    btn.disabled = true;
+                } else {
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    btn.disabled = false;
+                }
+            });
+            
+            nextButtons.forEach(btn => {
+                if (currentPhotoIndex === currentPhotos.length - 1) {
+                    btn.classList.add('opacity-50', 'cursor-not-allowed');
+                    btn.disabled = true;
+                } else {
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    btn.disabled = false;
+                }
+            });
+            
+            // Actualizar miniaturas
+            const thumbnails = document.querySelectorAll('.w-16.h-16.object-cover.rounded.cursor-pointer');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentPhotoIndex) {
+                    thumb.classList.add('border-accent');
+                    thumb.classList.remove('border-transparent');
+                } else {
+                    thumb.classList.remove('border-accent');
+                    thumb.classList.add('border-transparent');
+                }
+            });
+        }
+        
+        function handlePhotoKeyboard(e) {
+            if (!currentModal) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    navigatePhoto(-1);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    navigatePhoto(1);
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    closePhotoModal();
+                    break;
+            }
+        }
+        
+        // Cerrar modales al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fixed') && e.target.classList.contains('bg-black')) {
+                e.target.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
